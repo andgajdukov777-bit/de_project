@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход - Конференции.РФ</title>
+</head>
+<body>
+    <h2>Вход в систему</h2>
+    
+    <!-- Если пароль неверный, тут появится красная ошибка -->
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <p>
+            <label>Логин:</label><br>
+            <input type="text" name="login" required>
+        </p>
+        <p>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required>
+        </p>
+        <button type="submit">Войти</button>
+    </form>
+    
+    <br>
+    <a href="/register">Еще не зарегистрированы? Регистрация</a>
+</body>
+</html>

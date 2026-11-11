@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Все заявки</title>
+</head>
+<body>
+    <h2>Все заявки пользователей</h2>
+
+    <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
+        <tr>
+            <th>ID</th>
+            <th>Пользователь</th>
+            <th>Помещение</th>
+            <th>Дата</th>
+            <th>Оплата</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req[0] }}</td>
+            <td>{{ req[1] }}</td>
+            <td>{{ req[2] }}</td>
+            <td>{{ req[3] }}</td>
+            <td>{{ req[4] }}</td>
+            <td><b>{{ req[5] }}</b></td>
+            <td>
+                <!-- Ссылки для смены статуса -->
+                <a href="/update_status/{{ req[0] }}/Мероприятие назначено">Назначить</a> | 
+                <a href="/update_status/{{ req[0] }}/Завершено">Завершить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

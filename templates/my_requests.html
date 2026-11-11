@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заявки</title>
+</head>
+<body>
+    <h2>Личный кабинет: {{ login }}</h2>
+    <a href="/create_request"><button style="padding: 10px; margin-bottom: 20px;">+ Создать новую заявку</button></a>
+
+    <table border="1" cellpadding="10" style="border-collapse: collapse; width: 100%;">
+        <tr>
+            <th>ID</th>
+            <th>Помещение</th>
+            <th>Дата начала</th>
+            <th>Способ оплаты</th>
+            <th>Статус</th>
+        </tr>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req[0] }}</td>
+            <td>{{ req[1] }}</td>
+            <td>{{ req[2] }}</td>
+            <td>{{ req[3] }}</td>
+            <td><b>{{ req[4] }}</b></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5">У вас пока нет заявок.</td></tr>
+        {% endfor %}
+    </table>    <br><hr><br>
+    <h3>Оставить отзыв о мероприятии</h3>
+    <p>Выберите ID заявки (из таблицы выше) и напишите отзыв:</p>
+    
+    <form method="POST" action="/add_review/1">
+        <p>
+            <label>ID заявки (пока впиши 1):</label><br>
+            <input type="number" name="req_id" value="1" required>
+        </p>
+        <p>
+            <label>Текст отзыва:</label><br>
+            <textarea name="review_text" rows="4" cols="50" required></textarea>
+        </p>
+        <!-- ВНИМАНИЕ: В action жестко прописан /add_review/1, чтобы тебе не усложнять. -->
+        <button type="submit">Отправить отзыв</button>
+    </form>
+</body>
+</html>

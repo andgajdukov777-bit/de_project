@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать заявку</title>
+</head>
+<body>
+    <h2>Формирование заявки</h2>
+
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <p>
+            <label>Название помещения (например: Аудитория 101):</label><br>
+            <input type="text" name="room_name" required>
+        </p>
+        <p>
+            <label>Желаемая дата начала:</label><br>
+            <!-- Для удобства используем календарик -->
+            <input type="date" name="start_date" required>
+        </p>
+        <p>
+            <label>Способ оплаты:</label><br>
+            <select name="payment_method">
+                <option value="Очное посещение">Очное посещение</option>
+                <option value="Перевод по СБП">Перевод по системе СБП</option>
+            </select>
+        </p>
+        <button type="submit">Отправить заявку</button>
+    </form>
+    
+    <br>
+    <a href="/my_requests">Вернуться в кабинет</a>
+</body>
+</html>
